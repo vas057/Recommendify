@@ -11,7 +11,7 @@ function Home() {
                 console.log("hi")
                 <a
                     className="App-link"
-                    href={"/auth/login"}
+                    href={"/server/login"}
                 >
                     Login Here
                 </a>
