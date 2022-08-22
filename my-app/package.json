@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "Buffer": "0.0.0",
     "axios": "^0.27.2",
+    "concurrently": "^7.3.0",
     "cookie-session": "^2.0.0",
     "csurf": "^1.11.0",
     "dotenv": "^16.0.1",
@@ -26,10 +27,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"nodemon server.js\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": [
