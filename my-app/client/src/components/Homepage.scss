@@ -1,0 +1,52 @@
+$primary-background: #114538;
+$secondary-background: hwb(188 6% 70%);
+$font-title: 'Segoe UI';
+$font-main: 'Montserrat';
+
+.description {
+    color: white;
+    font-family: $font-main;
+    font-weight: 900;
+    font-size: 4vh;
+    text-align: left;
+    margin-left: 5vw;
+    margin-top: 1vh;
+}
+
+.login-button {
+    // align-self: center;
+    background-color: #1DB954;
+    min-height: fit-content;
+    min-width: fit-content;
+    padding: 15px;
+    margin-left: 5vw;
+    max-width: 20vw;
+    color: whitesmoke;
+    font-size: 1rem;
+    border-radius: 30px;
+    font-family: $font-title;
+    font-weight: 800;
+    border: none;
+    outline: none;
+    margin-top: 1vh;
+
+    &:hover {
+        // box-shadow: 0px 0px 40px 15px $primary-background;
+        border: none;
+        outline: none;
+        transition: all .2s ease-in-out;
+        transform: scale(1.09)
+    }
+}
+
+.title {
+    color: white;
+    font-family: $font-title;
+    font-weight: 900;
+    font-size: 10vh;
+    text-align: left;
+    margin-left: 5vw;
+    margin-top: 35vh;
+}
+
+

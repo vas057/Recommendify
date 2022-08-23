@@ -45,26 +45,28 @@ import queryString from 'query-string';
 // export default App;
 
 import './App.css';
+import Homepage from './components/Homepage'
 
 
 function App() {
 
-  function getToken() {
-    let parsed = queryString.parse(window.location.search);
-    let accessToken = parsed.access_token;
+  // function getToken() {
+  //   let parsed = queryString.parse(window.location.search);
+  //   let accessToken = parsed.access_token;
   
-    fetch('https://api.spotify.com/v1/me', {
-      headers: {'Authorization': 'Bearer ' + accessToken}
-    }).then(response => response.json())
-    .then(data => console.log(data))
-  }
+  //   fetch('https://api.spotify.com/v1/me', {
+  //     headers: {'Authorization': 'Bearer ' + accessToken}
+  //   }).then(response => response.json())
+  //   .then(data => console.log(data))
+  // }
 
   return (
     <div>
-      <button onClick={() => {window.location = 'http://localhost:8888/login'}}
+      <Homepage></Homepage>
+      {/* <button onClick={() => {window.location = 'http://localhost:8888/login'}}
           style={{padding: '20px', 'font-size': '50px', 'margin-top': '20px'}}>Sign in with Spotify</button>
       <button onClick={getToken}
-        style={{padding: '20px', 'font-size': '50px', 'margin-top': '20px'}}>Return data</button>
+        style={{padding: '20px', 'font-size': '50px', 'margin-top': '20px'}}>Return data</button> */}
     </div>
     
 
