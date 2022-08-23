@@ -21,7 +21,7 @@ function Home() {
             <header className="App-header">
                 <h1 className = "title">Recommendify</h1>
                 <p className = "description">Get the perfect next song to add to your playlist.</p>
-                <button className = "login-button" onClick={() => {window.location = 'http://localhost:8888/login'}}>LOGIN TO SPOTIFY</button>
+                <button className = "login-button" onClick={() => {window.location = 'http://localhost:8888/login'}}>LOGIN TO SPOTIFY &#10132;</button>
                 {/* <button className = "login-button" onClick={getToken}>Return Data</button> */}
             </header>
         </div>
