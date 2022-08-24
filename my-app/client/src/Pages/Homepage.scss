@@ -1,5 +1,6 @@
 $primary-background: #114538;
 $secondary-background: hwb(188 6% 70%);
+$spotify-color: #1DB954;
 $font-title: 'Segoe UI';
 $font-main: 'Montserrat';
 
@@ -15,7 +16,7 @@ $font-main: 'Montserrat';
 
 .login-button {
     // align-self: center;
-    background-color: #1DB954;
+    background-color: $spotify-color;
     min-height: fit-content;
     min-width: fit-content;
     padding: 15px;

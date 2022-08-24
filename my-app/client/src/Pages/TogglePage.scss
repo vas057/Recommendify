@@ -1,0 +1,39 @@
+$font-main: 'Montserrat';
+$primary-background: #114538;
+$secondary-background: hwb(188 6% 70%);
+$spotify-color: #1DB954;
+$font-title: 'Segoe UI';
+
+.toggle-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
+}
+
+.header {
+    color: white;
+    font-family: $font-title;
+    font-weight: 900;
+    font-size: 5vh;
+    margin-top: 3vh;
+    margin-bottom: none;
+}
+
+
+.toggle-page-desc {
+    color: white;
+    font-family: $font-main;
+    font-weight: 500;
+    font-size: 2.5vh;
+    margin-top: 7.5vh;
+}
+
+.horizontal-line {
+    height: 10px;
+    background-color: $spotify-color;
+    border: none;
+    width: 8vw;
+    margin-top: none;
+    padding-top:none;
+}

@@ -45,13 +45,13 @@
 // export default App;
 
 import './App.css';
-import Homepage from './components/Homepage';
-import TogglePage from './components/TogglePage';
-import ErrorPage from './components/Errorpage';
+import Homepage from './Pages/Homepage';
+import TogglePage from './Pages/TogglePage';
+import ErrorPage from './Pages/Errorpage';
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link} from "react-router-dom";
 import queryString from 'query-string';
-import accessToken from './components/Homepage'
+import accessToken from './Pages/Homepage'
 
 // function getToken() {
 //   let parsed = queryString.parse(window.location.search);
