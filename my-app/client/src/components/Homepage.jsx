@@ -15,7 +15,7 @@ function getToken() {
     .then(data => console.log(data))
 
     return accessToken;
-  }
+}
 
 function Home() {
 
@@ -26,9 +26,6 @@ function Home() {
                 <p className = "description">Get the perfect next song to add to your playlist.</p>
                 <button className = "login-button" onClick={() => {
                     window.location = 'http://localhost:8888/login';
-                    console.log("hfjhgkjhg")
-                    let token = getToken()
-                    console.log(token)
                 }}>LOGIN TO SPOTIFY &#10132;</button>
                 
             </header>
