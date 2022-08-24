@@ -51,19 +51,19 @@ import ErrorPage from './components/Errorpage';
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link} from "react-router-dom";
 import queryString from 'query-string';
+import accessToken from './components/Homepage'
 
+// function getToken() {
+//   let parsed = queryString.parse(window.location.search);
+//   let accessToken = parsed.access_token;
 
-function getToken() {
-  let parsed = queryString.parse(window.location.search);
-  let accessToken = parsed.access_token;
+//   fetch('https://api.spotify.com/v1/me', {
+//     headers: {'Authorization': 'Bearer ' + accessToken}
+//   }).then(response => response.json())
+//   .then(data => console.log(data))
 
-  fetch('https://api.spotify.com/v1/me', {
-    headers: {'Authorization': 'Bearer ' + accessToken}
-  }).then(response => response.json())
-  .then(data => console.log(data))
-
-  return accessToken;
-}
+//   return accessToken;
+// }
 
 // function App() {
 //   return (
@@ -91,8 +91,7 @@ function App() {
 
   return(
     <div>
-      <Homepage></Homepage>
-{/* 
+      {/* <Homepage></Homepage> */}
      <Router>
         
         <Routes>
@@ -102,14 +101,16 @@ function App() {
         </Routes>
       </Router>
 
+{/* 
       <button onClick={() => {
       let token = getToken()
       console.log(token)
       if (!token) {
-        navigate('/TogglePage')
+        // navigate('/TogglePage')
       }
       else {
-        navigate('/TogglePage')
+        window.location='http://localhost:3000/TogglePage';
+        // navigate('/TogglePage')
       }
       }}
       style={{padding: '20px', 'font-size': '50px', 'margin-top': '20px'}}>Return data</button>  */}

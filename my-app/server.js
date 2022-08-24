@@ -84,7 +84,13 @@ app.get('/callback', function(req, res) {
       //   'access_token': access_token
       // });
     }
-        res.redirect('http://localhost:3000?access_token=' + access_token)
+
+    if (access_token) {
+      res.redirect('http://localhost:3000/TogglePage?access_token=' + access_token)
+    }
+    else {
+      res.redirect('http://localhost:3000/')
+    }
 
   });
 });

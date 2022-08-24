@@ -13,10 +13,9 @@ function getToken() {
       headers: {'Authorization': 'Bearer ' + accessToken}
     }).then(response => response.json())
     .then(data => console.log(data))
-  
+
     return accessToken;
   }
-  
 
 function Home() {
 
@@ -25,8 +24,13 @@ function Home() {
             <header className="App-header">
                 <h1 className = "title">Recommendify</h1>
                 <p className = "description">Get the perfect next song to add to your playlist.</p>
-                <button className = "login-button" onClick={() => {window.location = 'http://localhost:8888/login'}}>LOGIN TO SPOTIFY &#10132;</button>
-                <button className = "login-button" onClick={getToken}>Return Data</button>
+                <button className = "login-button" onClick={() => {
+                    window.location = 'http://localhost:8888/login';
+                    console.log("hfjhgkjhg")
+                    let token = getToken()
+                    console.log(token)
+                }}>LOGIN TO SPOTIFY &#10132;</button>
+                
             </header>
         </div>
     );
