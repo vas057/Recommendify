@@ -48,6 +48,8 @@ import './App.css';
 import Homepage from './Pages/Homepage';
 import TogglePage from './Pages/TogglePage';
 import ErrorPage from './Pages/Errorpage';
+import SearchBar from './components/SearchBar'
+import Toggle from './components/Slider';
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link} from "react-router-dom";
 import queryString from 'query-string';
@@ -97,6 +99,9 @@ function App() {
         <Routes>
           <Route path = "/" element = {<Homepage></Homepage>}></Route>
           <Route path = "/TogglePage" element = {<TogglePage></TogglePage>}></Route>
+          <Route path = "/Toggle" element = {<Toggle></Toggle>}></Route>
+          
+          <Route path = "/SearchBar" element = {<SearchBar></SearchBar>}></Route>
           <Route path = "/*" element = {<ErrorPage></ErrorPage>}></Route>
         </Routes>
       </Router>
