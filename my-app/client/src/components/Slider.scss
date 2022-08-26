@@ -8,9 +8,26 @@ $spotify-color: #1DB954;
     justify-content: center;
 }
 
-.slider-parent {
-    position: relative;
+.slider-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .slider-label {
+        color: white;
+    }
+
+    .slider-parent {
+        position: relative;
+    }
+    
+    .bubble {
+        position:absolute;
+    }
 }
+
+
 
 input[type='range'] {
     margin: 28px;
@@ -41,8 +58,4 @@ input[type='range'] {
         transition: box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, left 350ms cubic-
         bezier(0.4, 0, 0.2, 1) 0ms, bottom 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     }
-}
-
-.bubble {
-    position:absolute;
 }

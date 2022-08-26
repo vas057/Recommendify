@@ -101,7 +101,7 @@ function App() {
           <Route path = "/TogglePage" element = {<TogglePage></TogglePage>}></Route>
           <Route path = "/Toggle" element = {<Toggle></Toggle>}></Route>
           
-          <Route path = "/SearchBar" element = {<SearchBar></SearchBar>}></Route>
+          {/* <Route path = "/SearchBar" element = {<SearchBar></SearchBar>}></Route> */}
           <Route path = "/*" element = {<ErrorPage></ErrorPage>}></Route>
         </Routes>
       </Router>

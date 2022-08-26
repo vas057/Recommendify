@@ -42,7 +42,7 @@ function SearchBar () {
     }
 
     return (
-        <div className="App">
+        <div>
             <form>
                 <input id="searchArtistField"
                     placeholder="Enter Artist Here"

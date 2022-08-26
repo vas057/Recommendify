@@ -25,9 +25,10 @@ function Home() {
             <div className = "toggle-page">
                 <h2 className = "header">Recommendify</h2>
                 <hr className = "horizontal-line"></hr>
+                <SearchBar></SearchBar>
+
                 <p className = "toggle-page-desc">Adjust the sliders to your liking, and let Recommendify do the work!</p>
                 <Slider></Slider>
-                <SearchBar></SearchBar>
             </div>
         </div>
     );
