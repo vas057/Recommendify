@@ -6,7 +6,7 @@
 #BCC5B4
 */
 .App {
-  background-image: url('./images/music-bg.jpg');
+  /* background-image: url('./images/music-bg.jpg'); */
   background-size: cover;
   background-position: center;
   min-height: 100vh;
