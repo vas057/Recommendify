@@ -4,6 +4,7 @@ import {Grid, TextField, Button} from '@material-ui/core';
 import {Search} from '@material-ui/icons';
 import {Container, InputGroup, FormControl} from 'react-bootstrap'
 import queryString from 'query-string';
+import './SearchBar.scss'
 
 // async function search() {
 //     console.log("Search for " + searchInput)
@@ -42,26 +43,61 @@ function SearchBar () {
     }
 
     return (
-        <div>
+        <div className = "search-bars">
             <form>
-                <input id="searchArtistField"
-                    placeholder="Enter Artist Here"
-                    onKeyPress={event => {
-                        if (event.key == "Enter") {
+                <h2>Artist</h2>
+                <div className = "search-bar">
+                    <input id="searchArtistField"
+                        placeholder="Enter Artist Here"
+                        onKeyPress={event => {
+                            if (event.key == "Enter") {
+                                var searchVal = document.getElementById("searchArtistField").value; //get artist value
+                                event.preventDefault();
+                                searchSpotify(searchVal); //find artist
+                            }
+                        }}>
+                    </input>
+                    <button 
+                        type="button"
+                        onClick={event => {
                             var searchVal = document.getElementById("searchArtistField").value; //get artist value
                             event.preventDefault();
-                            searchSpotify(searchVal); //find artist
                         }
-                    }}>
-                </input>
-                <button 
-                    type="button"
-                    onClick={event => {
-                        var searchVal = document.getElementById("searchArtistField").value; //get artist value
-                        event.preventDefault();
-                        searchSpotify(searchVal); //find artist
-                    }
-                }>Search</button>
+                    }>Search</button>   
+                </div>
+            </form>
+            <form>
+                <h2>Genre</h2>
+                <div className = "search-bar">
+                    <input id="searchGenreField"
+                        placeholder="Enter Genre Here">
+                    </input>
+                </div>
+                
+            </form>
+            <form>
+                <h2>Similar Track</h2>
+                <div className = "search-bar">
+                    <input id="searchTrackField"
+                        placeholder="Enter A Similar Track Here"
+                        onKeyPress={event => {
+                            if (event.key == "Enter") {
+                                var searchVal = document.getElementById("searchTrackField").value; //get track value
+                                event.preventDefault();
+                                // searchSpotify(searchVal); //find genre
+                            }
+                        }}>
+                    </input>
+                    <button 
+                        type="button"
+                        onClick={event => {
+                            var searchVal = document.getElementById("searchTrackField").value; //get track value
+                            event.preventDefault();
+                            // searchSpotify(searchVal); //find artist
+                        }
+                    }>Search</button>
+                </div>
+
             </form>
         </div>
     );
