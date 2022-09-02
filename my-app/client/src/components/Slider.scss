@@ -36,7 +36,7 @@ $spotify-color: #1DB954;
 
 input[type='range'] {
     margin-top: 5vh;
-    margin-bottom: 20vh;
+    margin-bottom: 5vh;
 
     -webkit-appearance: none;
     height: 3vh;
@@ -82,3 +82,38 @@ h4 {
     padding-bottom: 0;
     margin-bottom: 0;
 }
+
+.custom-values {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    /* ...existing styles */
+    display: grid;
+    place-content: center;
+  }
+  
+  input[type="checkbox"]::before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--form-control-color);
+  }
+  
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }

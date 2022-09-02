@@ -34,26 +34,26 @@ import SearchBar from '../components/SearchBar';
 
 // }
 
-var minAcoustic = 0, maxAcoustic = 1, minDanceability = 0, maxDanceability = 1, minEnergy = 0, maxEnergy = 1, minInstrumentalness = 0, maxInstrumentalness = 1, minPopularity = 0, maxPopularity = 1;
+// var minAcoustic = 0, maxAcoustic = 1, minDanceability = 0, maxDanceability = 1, minEnergy = 0, maxEnergy = 1, minInstrumentalness = 0, maxInstrumentalness = 1, minPopularity = 0, maxPopularity = 1;
 
-function findRange(value) {
-    var min, max;
+// function findRange(value) {
+//     var min, max;
 
-    if (value < 0.3) {
-        min = 0;
-        max = 0.33;
-    }
-    if (0.33 >= value <= 0.66) {
-        min = 0.34;
-        max = 0.66;
-    }
-    if (value > 0.66) {
-        min = 0.67;
-        max = 1;
-    }
+//     if (value < 0.3) {
+//         min = 0;
+//         max = 0.33;
+//     }
+//     if (0.33 >= value <= 0.66) {
+//         min = 0.34;
+//         max = 0.66;
+//     }
+//     if (value > 0.66) {
+//         min = 0.67;
+//         max = 1;
+//     }
 
-    return [min, max];
-}
+//     return [min, max];
+// }
 
 function getToken() {
     let parsed = queryString.parse(window.location.search);
@@ -91,44 +91,51 @@ async function searchSpotify(ARTIST, TRACK) {
         .then(data => {return data.tracks.items[0].id})
     console.log(trackID) //RETURNS TRACK ID
 
+    var GENRE = document.getElementById("searchGenreField").value;
+
+
+    window.location = 'http://localhost:3000/DisplayPage?artist=' + artistID + '&genre=' + GENRE + '&track=' + trackID + '&access_token=' + getToken();
+
+
 
     //recommendation information
-    var GENRE = document.getElementById("searchGenreField").value;
-    [minAcoustic, maxAcoustic] = findRange(document.getElementById("acousticVal").value/100);
-    [minDanceability, maxDanceability] = findRange(document.getElementById("danceVal").value/100);
-    [minEnergy, maxEnergy] = findRange(document.getElementById("energyVal").value/100)
-    [minInstrumentalness, maxInstrumentalness] =  findRange(document.getElementById("instrumentalVal").value/100)
-    [minPopularity, maxPopularity] = findRange(document.getElementById("popularityVal").value/100)
+    // [minAcoustic, maxAcoustic] = findRange(document.getElementById("acousticVal").value/100);
+    // [minDanceability, maxDanceability] = findRange(document.getElementById("danceVal").value/100);
+    // [minEnergy, maxEnergy] = findRange(document.getElementById("energyVal").value/100)
+    // [minInstrumentalness, maxInstrumentalness] =  findRange(document.getElementById("instrumentalVal").value/100)
+    // [minPopularity, maxPopularity] = findRange(document.getElementById("popularityVal").value/100)
+    // minPopularity = minPopularity*100; 
+    // maxPopularity = maxPopularity*100;
 
 
-    console.log(minAcoustic)
-    console.log(maxAcoustic)
-    console.log(minDanceability)
-    console.log(maxDanceability)
-    console.log(minEnergy)
-    console.log(maxEnergy)
-    console.log(minInstrumentalness)
-    console.log(maxInstrumentalness)
-    console.log(minPopularity)
-    console.log(maxPopularity)
+    // console.log(minAcoustic)
+    // console.log(maxAcoustic)
+    // console.log(minDanceability)
+    // console.log(maxDanceability)
+    // console.log(minEnergy)
+    // console.log(maxEnergy)
+    // console.log(minInstrumentalness)
+    // console.log(maxInstrumentalness)
+    // console.log(minPopularity)
+    // console.log(maxPopularity)
     
 
     
     //GET TRACKS
-    fetch('https://api.spotify.com/v1/recommendations?seed_artists=' + artistID 
-    + '&seed_genres="' + GENRE 
-    + '&seed_tracks=' + trackID 
-    + '&min_acousticness=' + minAcoustic
-    + '&max_acousticness=' + maxAcoustic
-    + '&min_danceability=' + minDanceability
-    + '&max_danceability=' + maxDanceability
-    + '&min_energy=' + minEnergy
-    + '&max_energy=' + maxEnergy, searchParams)
+    // fetch('https://api.spotify.com/v1/recommendations?seed_artists=' + artistID 
+    // + '&seed_genres="' + GENRE 
+    // + '&seed_tracks=' + trackID 
+    // + '&min_acousticness=' + minAcoustic
+    // + '&max_acousticness=' + maxAcoustic
+    // + '&min_danceability=' + minDanceability
+    // + '&max_danceability=' + maxDanceability
+    // + '&min_energy=' + minEnergy
+    // + '&max_energy=' + maxEnergy, searchParams)
 
-    .then(response => response.json())
-    .then(data => console.log(data))
+    // .then(response => response.json())
+    // .then(data => console.log(data))
 
-    return artistID;
+    // return [artistID, trackID];
 }
 
 /*
@@ -146,28 +153,23 @@ function Home() {
         <div className="App">
             <div className = "toggle-page">
                 <h2 className = "header">Recommendify</h2>
-                <hr className = "horizontal-line"></hr>
+                {/* <hr className = "horizontal-line"></hr> */}
+                <p className = "toggle-page-desc">Enter in any combination of artist, genre, and song, and let Recommendify do the work!</p>
                 <SearchBar></SearchBar>
-                <p className = "toggle-page-desc">Adjust the sliders to your liking, and let Recommendify do the work!</p>
-                <Slider></Slider>
+                {/* <Slider></Slider> */}
                 <button 
                     type="button"
                     onClick={event => {
-                        event.preventDefault();
-                        // getToken(); //find artist
-                        var ARTIST = document.getElementById("searchArtistField").value;
-                        var TRACK = document.getElementById("searchGenreField").value;
+                    var [ARTIST, TRACK] = searchSpotify(document.getElementById("searchArtistField").value, document.getElementById("searchGenreField").value);
+                    var GENRE = document.getElementById("searchGenreField").value;
+                    // var TRACK = document.getElementById("searchGenreField").value;
 
-                        searchSpotify(ARTIST, TRACK);
-                        // console.log(ARTIST);
-                        // console.log(TRACK);
-                        // var ACOUSTICNESS_VAL = document.getElementById("acousticVal").value/100;
-                        // var DANCEABILITY_VAL = document.getElementById("danceVal").value/100;
-                        // console.log("THIS WORKS")
-                        // console.log(ACOUSTICNESS_VAL);
-                        // findRange(ACOUSTICNESS_VAL)
-                        // console.log("MIN" + minAcoustic)
-                        // console.log("MAX" + maxAcoustic)
+                        event.preventDefault();
+                        // // getToken(); //find artist
+                        // var ARTIST = document.getElementById("searchArtistField").value;
+                        // var TRACK = document.getElementById("searchGenreField").value;
+
+                        // searchSpotify(ARTIST, TRACK);
                     }
                 }>Find a Song!</button>
             </div>

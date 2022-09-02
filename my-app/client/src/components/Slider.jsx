@@ -84,8 +84,18 @@ function Slider() {
                         <div className = "bubble"></div>                    
                     </div>
                 </div>
-                
+                <div className = "custom-div">
+            <form className = "custom-values">
+                <p>Enter values between 0 and 100</p>
+                <h3>Min: </h3>
+                <input id = "min"></input>
+                <h3>Max: </h3>
+                <input id = "max"></input>
+            </form>
             </div>
+            </div>
+           
+            
             <div className = "slider-section">
                 <h3 className = "slider-label">Danceability</h3>
                 <div className = "slider-noheader">
