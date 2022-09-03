@@ -5,6 +5,9 @@ import queryString from 'query-string';
 import {useState, useEffect} from 'react';
 import Slider from '../components/Slider';
 import SearchBar from '../components/SearchBar';
+import {Link} from 'react-router-dom';
+import DisplayPage from './DisplayPage'
+
 // import {acousticValue} from '../components/Slider/ACOUSTICNESS_VAL'
 
 
@@ -67,76 +70,7 @@ function getToken() {
     return accessToken;
 }
 
-async function searchSpotify(ARTIST, TRACK) {
-    let token = getToken();
 
-    //GET AUTH
-    var searchParams = {
-        method: 'GET', 
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        }
-    }
-
-    //get artists from api
-    var artistID = await fetch('https://api.spotify.com/v1/search?q=' + ARTIST + '&type=artist', searchParams)
-        .then(response => response.json())
-        .then(data => {return data.artists.items[0].id})
-    console.log(artistID) //RETURNS ARTIST ID
-
-
-    var trackID = await fetch('https://api.spotify.com/v1/search?q=' + TRACK + '&type=track', searchParams)
-        .then(response => response.json())
-        .then(data => {return data.tracks.items[0].id})
-    console.log(trackID) //RETURNS TRACK ID
-
-    var GENRE = document.getElementById("searchGenreField").value;
-
-
-    window.location = 'http://localhost:3000/DisplayPage?artist=' + artistID + '&genre=' + GENRE + '&track=' + trackID + '&access_token=' + getToken();
-
-
-
-    //recommendation information
-    // [minAcoustic, maxAcoustic] = findRange(document.getElementById("acousticVal").value/100);
-    // [minDanceability, maxDanceability] = findRange(document.getElementById("danceVal").value/100);
-    // [minEnergy, maxEnergy] = findRange(document.getElementById("energyVal").value/100)
-    // [minInstrumentalness, maxInstrumentalness] =  findRange(document.getElementById("instrumentalVal").value/100)
-    // [minPopularity, maxPopularity] = findRange(document.getElementById("popularityVal").value/100)
-    // minPopularity = minPopularity*100; 
-    // maxPopularity = maxPopularity*100;
-
-
-    // console.log(minAcoustic)
-    // console.log(maxAcoustic)
-    // console.log(minDanceability)
-    // console.log(maxDanceability)
-    // console.log(minEnergy)
-    // console.log(maxEnergy)
-    // console.log(minInstrumentalness)
-    // console.log(maxInstrumentalness)
-    // console.log(minPopularity)
-    // console.log(maxPopularity)
-    
-
-    
-    //GET TRACKS
-    // fetch('https://api.spotify.com/v1/recommendations?seed_artists=' + artistID 
-    // + '&seed_genres="' + GENRE 
-    // + '&seed_tracks=' + trackID 
-    // + '&min_acousticness=' + minAcoustic
-    // + '&max_acousticness=' + maxAcoustic
-    // + '&min_danceability=' + minDanceability
-    // + '&max_danceability=' + maxDanceability
-    // + '&min_energy=' + minEnergy
-    // + '&max_energy=' + maxEnergy, searchParams)
-
-    // .then(response => response.json())
-    // .then(data => console.log(data))
-
-    // return [artistID, trackID];
-}
 
 /*
 SAMPLE FETCH EX
@@ -147,6 +81,107 @@ SAMPLE FETCH EX
 
 
 function Home() {
+
+    // const [tracks, setTracks] = useState([])
+    var setTracks = []
+
+
+    async function searchSpotify(ARTIST, TRACK) {
+
+        var GENRE = document.getElementById("searchGenreField").value;
+
+        if (ARTIST == null || GENRE == null || TRACK == null) {
+            window.alert("All values MUST be filled in");
+
+            window.location = 'http://localhost:3000/TogglePage?&access_token=' + getToken()
+        }
+        
+        let token = getToken();
+    
+        //GET AUTH
+        var searchParams = {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        }
+    
+        //get artists from api
+        var artistID = await fetch('https://api.spotify.com/v1/search?q=' + ARTIST + '&type=artist', searchParams)
+            .then(response => response.json())
+            .then(data => {return data.artists.items[0].id})
+        // console.log(artistID) //RETURNS ARTIST ID
+    
+    
+        var trackID = await fetch('https://api.spotify.com/v1/search?q=' + TRACK + '&type=track', searchParams)
+            .then(response => response.json())
+            .then(data => {return data.tracks.items[0].id})
+        // console.log(trackID) //RETURNS TRACK ID
+    
+        var fetchedTracks = await fetch('https://api.spotify.com/v1/recommendations?seed_artists=' + artistID
+        + '&seed_genres="' + GENRE
+        + '&seed_tracks=' + trackID, searchParams)
+    
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setTracks = data.tracks[0];
+        })
+    
+        //initializing song variables
+        var songID = (setTracks.id)
+        console.log(songID);
+    
+
+        if (setTracks == null) {
+            window.location = 'http://localhost:3000/NoSongs' + '&access_token=' + getToken();
+        }
+        else {
+            window.location = 'http://localhost:3000/DisplayPage?song=' + songID + '&access_token=' + getToken();
+        }
+    
+    
+    
+        //recommendation information
+        // [minAcoustic, maxAcoustic] = findRange(document.getElementById("acousticVal").value/100);
+        // [minDanceability, maxDanceability] = findRange(document.getElementById("danceVal").value/100);
+        // [minEnergy, maxEnergy] = findRange(document.getElementById("energyVal").value/100)
+        // [minInstrumentalness, maxInstrumentalness] =  findRange(document.getElementById("instrumentalVal").value/100)
+        // [minPopularity, maxPopularity] = findRange(document.getElementById("popularityVal").value/100)
+        // minPopularity = minPopularity*100; 
+        // maxPopularity = maxPopularity*100;
+    
+    
+        // console.log(minAcoustic)
+        // console.log(maxAcoustic)
+        // console.log(minDanceability)
+        // console.log(maxDanceability)
+        // console.log(minEnergy)
+        // console.log(maxEnergy)
+        // console.log(minInstrumentalness)
+        // console.log(maxInstrumentalness)
+        // console.log(minPopularity)
+        // console.log(maxPopularity)
+        
+    
+        
+        //GET TRACKS
+        // fetch('https://api.spotify.com/v1/recommendations?seed_artists=' + artistID 
+        // + '&seed_genres="' + GENRE 
+        // + '&seed_tracks=' + trackID 
+        // + '&min_acousticness=' + minAcoustic
+        // + '&max_acousticness=' + maxAcoustic
+        // + '&min_danceability=' + minDanceability
+        // + '&max_danceability=' + maxDanceability
+        // + '&min_energy=' + minEnergy
+        // + '&max_energy=' + maxEnergy, searchParams)
+    
+        // .then(response => response.json())
+        // .then(data => console.log(data))
+    
+        // return [artistID, trackID];
+    }
 
     // whenPressed();
     return (
@@ -170,8 +205,9 @@ function Home() {
                         // var TRACK = document.getElementById("searchGenreField").value;
 
                         // searchSpotify(ARTIST, TRACK);
+
                     }
-                }>Find a Song!</button>
+                }>Next</button>
             </div>
         </div>
     );

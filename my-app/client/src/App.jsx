@@ -51,6 +51,7 @@ import ErrorPage from './Pages/Errorpage';
 import DisplayPage from './Pages/DisplayPage';
 import SearchBar from './components/SearchBar'
 import Toggle from './components/Slider';
+import NoSongs from './Pages/NoSongs';
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, useNavigate, Link} from "react-router-dom";
 import queryString from 'query-string';
@@ -69,8 +70,9 @@ function App() {
         <Routes>
           <Route path = "/" element = {<Homepage></Homepage>}></Route>
           <Route path = "/TogglePage" element = {<TogglePage></TogglePage>}></Route>
-          {/* <Route path = "/Toggle" element = {<Toggle></Toggle>}></Route> */}
           <Route path = "/DisplayPage" element = {<DisplayPage></DisplayPage>}></Route>
+          <Route path = "/NoSongs" element = {<NoSongs></NoSongs>}></Route>
+
 
           
           {/* <Route path = "/SearchBar" element = {<SearchBar></SearchBar>}></Route> */}

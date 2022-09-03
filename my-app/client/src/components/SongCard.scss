@@ -12,10 +12,20 @@
     align-items: center;
     background-color: black;
     border-radius: 20px;
-    // box-shadow: white 15px 15px 20px 5px;
-    // color: aliceblue;
+    box-shadow: white 15px 15px 20px 5px;
+    color: aliceblue;
     width: 50vw;
     height: auto;
+    padding: 2em;
+    margin: 5vh;
+    opacity: 50%;
+
+    &:hover {
+        opacity: 100%;
+        transform: scale(1.1); 
+        transition: all .2s ease-in-out;
+
+    }
 }
 
 .info-section {

@@ -47,7 +47,7 @@ function SearchBar () {
             <form>
                 <h2>Artist</h2>
                 <div className = "search-bar">
-                    <input id="searchArtistField"
+                    <input className = "search" id="searchArtistField"
                         placeholder="Enter Artist Here"
                         onKeyPress={event => {
                             if (event.key == "Enter") {
@@ -56,20 +56,13 @@ function SearchBar () {
                                 searchSpotify(searchVal); //find artist
                             }
                         }}>
-                    </input>
-                    <button 
-                        type="button"
-                        onClick={event => {
-                            var searchVal = document.getElementById("searchArtistField").value; //get artist value
-                            event.preventDefault();
-                        }
-                    }>Search</button>   
+                    </input>  
                 </div>
             </form>
             <form>
                 <h2>Genre</h2>
                 <div className = "search-bar">
-                    <input id="searchGenreField"
+                    <input className = "search"  id="searchGenreField"
                         placeholder="Enter Genre Here">
                     </input>
                 </div>
@@ -78,7 +71,7 @@ function SearchBar () {
             <form>
                 <h2>Similar Track</h2>
                 <div className = "search-bar">
-                    <input id="searchTrackField"
+                    <input className = "search" id="searchTrackField"
                         placeholder="Enter A Similar Track Here"
                         onKeyPress={event => {
                             if (event.key == "Enter") {
@@ -88,14 +81,6 @@ function SearchBar () {
                             }
                         }}>
                     </input>
-                    <button 
-                        type="button"
-                        onClick={event => {
-                            var searchVal = document.getElementById("searchTrackField").value; //get track value
-                            event.preventDefault();
-                            // searchSpotify(searchVal); //find artist
-                        }
-                    }>Search</button>
                 </div>
 
             </form>
