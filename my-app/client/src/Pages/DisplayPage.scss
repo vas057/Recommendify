@@ -1,3 +1,21 @@
+$primary-background: #114538;
+$secondary-background: hwb(188 6% 70%);
+$spotify-color: #1DB954;
+$font-title: 'Segoe UI';
+$font-main: 'Montserrat';
+
+.song-name {
+    font-family: $font-title;
+    color: $spotify-color;
+    font-size: 5vh;
+    margin: 0;
+    padding: 0;
+}
+
+.artist-name {
+    font-family: $font-main;
+}
+
 .cards {
     display: flex;
     flex-direction: column;
@@ -10,8 +28,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: black;
-    border-radius: 20px;
     // box-shadow: white 15px 15px 20px 5px;
     // color: aliceblue;
     width: 50vw;
@@ -28,4 +44,17 @@
 .track-image {
     height: 20vw;
     width: 20vw;
+}
+
+.display-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.image-playback {
+    box-shadow: 0px 0px 15px 1px;
+    margin: 5vh
 }

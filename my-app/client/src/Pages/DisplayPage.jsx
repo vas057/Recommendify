@@ -76,31 +76,23 @@ function Home() {
     return (
         <div className="App">
             <div className="display-page">
-                <h2>Your new Mix</h2>
-            <div className = "cards">
-                <div className = "song-card">
-                    <div className = "info-section">
-                        <h2>{song}</h2>
-                        <h3>{artist}</h3>
-                    </div>
-                    <div className = "image-playback">
-                        <img src = {coverArt} className = "track-image"></img>
-                    </div>
+                <h1 className = "song-name">Song: {song}</h1>
+                <h3 className = "artist-name">Artist: {artist}</h3>
+                <div className = "image-playback">
+                    <img src = {coverArt} className = "track-image" alt = "album art displayed here"></img>
                 </div>
                     <audio
-                            controls
-                            src={playbackLink}>
-                                Your browser does not support the
-                                <code>audio</code> element.
-                        </audio>
-                </div>
-            </div>
-            <button
+                        controls
+                        src={playbackLink}>
+                            Your browser does not support the
+                            <code>audio</code> element.
+                    </audio>
+                <button
                 onClick = {event => {
                     window.location = 'http://localhost:3000/TogglePage?&access_token=' + token[1];
                 }}
             >Go Back</button>
-
+            </div>
         </div>
     );
 }
