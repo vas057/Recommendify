@@ -2,6 +2,7 @@ let express = require('express')
 let request = require('request')
 let querystring = require('querystring')
 
+// console.log(process.env.SPOTIFY_CLIENT_SECRET)
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
